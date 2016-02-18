@@ -19,6 +19,13 @@ class ServiceNowClient(object):
     def create_client(httpConnection, username=None, password=None):
         return ServiceNowClient(httpConnection, username, password)
 
+    def query_table(self, table_name, query):
+        servicenow_api_url = '/api/now/v1/table/%s?%s' % (table_name, query)
+        response = self.httpRequest.get(servicenow_api_url, contentType = 'application/json')
+        if response.getStatus() == SN_RESULT_STATUS:
+            data = json.loads(response.getResponse())
+            return data
+        self.throw_error(response)
 
     def get_change_request_states(self):
         servicenow_api_url = '/api/now/v1/table/%s?element=state&name=task&sysparm_fields=%s' % ('sys_choice','value,label')

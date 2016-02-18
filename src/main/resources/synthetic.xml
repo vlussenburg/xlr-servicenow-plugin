@@ -78,4 +78,17 @@
     </type>
 
 	<type type="servicenow.Server" extends="configuration.HttpConnection"/>
+
+    <!-- ============ UI extensions: ============ -->
+
+    <type type="servicenow.ServiceNowQueryWidget" label="ServiceNow query widget" extends="xlrelease.Widget">
+        <property name="uri" transient="true" default="servicenow/ServiceNowQueryWidget/servicenow-query-widget-view.html" />
+        <property name="configurationUri" transient="true" default="servicenow/ServiceNowQueryWidget/servicenow-query-widget-config.html" />
+        <property name="coreModuleDependencies" default="xlrelease.servicenow.widget" kind="list_of_string" hidden="true"/>
+        <property name="title" description="Widget title" default="ServiceNow Query" />
+        <property category="configuration" name="servicenowServer" label="Server" description="ServiceNow server id to connect to" />
+        <property category="configuration" name="username" required="false" description="Overrides the username used to connect to the server" />
+        <property category="configuration" name="password" password="true" required="false" description="Overrides the password used to connect to the server" />
+        <property category="configuration" name="query" size="large" description="Query" />
+    </type>
 </synthetic>
