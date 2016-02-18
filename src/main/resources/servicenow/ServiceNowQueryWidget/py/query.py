@@ -28,7 +28,15 @@ if not username:
 if not password:
     password = servicenow_server.getProperty("password")
 
-servicenow_client = ServiceNowClientUtil.createServiceNowClient(servicenow_server, username, password)
-issues = servicenow_client.query_table(table_name, query)
+params = { 
+	"url": servicenow_server.getUrl(), 
+	"username": servicenow_server.getUsername(),
+	"password": servicenow_server.getPassword(),
+	"proxyHost": servicenow_server.getProxyHost(),
+	"proxyPort": servicenow_server.getProxyPort()
+}
+
+servicenow_client = ServiceNowClientUtil.createServiceNowClient(params, username, password)
+issues = servicenow_client.query_table(table_name, servicenow_query)
 
 response.entity = issues
