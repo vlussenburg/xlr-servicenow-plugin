@@ -1,1 +1,62 @@
-servicenow-query-widget-config.html
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<div data-ng-controller="servicenow.ServiceNowQueryWidgetConfigController as servicenowQueryWidget">
+    <div class="form-horizontal" ng-form="servicenowQueryConfigForm">
+
+        <div class="form-group">
+            <label for="title" class="control-label col-xs-3">Title</label>
+
+            <div class="col-xs-9">
+                <input type="text" id="title" name="title" required ng-model="xlrWidget.widget.title" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="servicenowServer" class="control-label col-xs-3">Server:</label>
+
+            <div class="col-xs-9">
+                <select id="servicenowServer" name="servicenowServer" required ng-model="xlrWidget.widget.servicenowServer" class="form-control field">
+                    <option ng-repeat="option in servicenowQueryWidget.servicenowServers" value="{{option.id}}">{{option.title}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="username" class="control-label col-xs-3">Username</label>
+
+            <div class="col-xs-9">
+                <input type="text" id="username" name="username" ng-model="xlrWidget.widget.username" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="control-label col-xs-3">Password</label>
+
+            <div class="col-xs-9">
+                <input type="password" id="password" name="password" ng-model="xlrWidget.widget.password" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="query" class="control-label col-xs-3">Query</label>
+
+            <div class="col-xs-9">
+                <textarea id="query" name="query" required ng-model="xlrWidget.widget.query" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="table_name" class="control-label col-xs-3">Table name</label>
+
+            <div class="col-xs-9">
+                <input type="text" id="table_name" name="table_name" ng-model="xlrWidget.widget.table_name" class="form-control">
+            </div>
+        </div>
+
+    </div>
+</div>

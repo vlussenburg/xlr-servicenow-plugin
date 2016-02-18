@@ -1,1 +1,32 @@
-servicenow-query-widget-view.html
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<div data-ng-controller="servicenow.ServiceNowQueryWidgetViewController as servicenowQueryWidget">
+
+    <div xlr-widget-button on-click="servicenowQueryWidget.refresh()" title="Refresh" css-class="button primary" icon="glyphicon glyphicon-refresh"></div>
+
+    <div ng-if="!servicenowQueryWidget.loading">
+        <table class="table">
+            <tr>
+                <th>Issue</th>
+                <th>Summary</th>
+                <th>Status</th>
+                <th>Created by</th>
+            </tr>
+            <tr ng-repeat="issue in servicenowQueryWidget.issues.result">
+                <td>{{issue.number}}</td>
+                <td>{{issue.short_description}}</td>
+                <td>{{issue.phase_state}}</td>
+                <td>{{issue.sys_created_by}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div ng-if="servicenowQueryWidget.loading" class="spinner" style="text-align: center">
+        <img src="static/@project.version@/img/big-ajax-loader.gif" alt="Loading..." />
+    </div>
+</div>

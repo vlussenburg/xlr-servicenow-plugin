@@ -90,5 +90,6 @@
         <property category="configuration" name="username" required="false" description="Overrides the username used to connect to the server" />
         <property category="configuration" name="password" password="true" required="false" description="Overrides the password used to connect to the server" />
         <property category="configuration" name="query" size="large" description="Query" />
+        <property category="configuration" name="table_name" description="Table name in Service Now to query (for example: change_request, incidents)" />        
     </type>
 </synthetic>
